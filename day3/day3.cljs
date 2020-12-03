@@ -11,22 +11,28 @@
       true
       false)))
 
-(defn count-trees []
+(defn count-trees [right down]
   (let [data-v (read-file "day3.txt")
         length (count data-v)]
     (loop [trees 0
-           index-y 1
-           index-x 3]
+           index-x right
+           index-y down]
       (if (>= index-y length)
         trees
         (recur (if
                 (has-tree? (get data-v index-y) index-x)
                  (+ trees 1)
                  trees)
-               (+ index-y 1)
-               (+ index-x 3))))))
+               (+ index-x right)
+               (+ index-y down))))))
 
-(print (count-trees))
+(defn solve []
+  (let [part1 (count-trees 3 1)
+        part2 (* (count-trees 1 1) (count-trees 3 1) (count-trees 5 1) (count-trees 7 1) (count-trees 1 2))]
+    (println "Part 1: " part1)
+    (println "Part 2: " part2)))
+
+(solve)
 
 
 
