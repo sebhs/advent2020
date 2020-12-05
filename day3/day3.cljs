@@ -6,7 +6,7 @@
 
 (defn has-tree? [line index]
   (let [times (+ 1 (quot index (count line)))
-        repeated-line (clojure.string/join (repeat times line))]
+        repeated-line (str/join (repeat times line))]
     (if (= (nth repeated-line index) \#)
       true
       false)))
