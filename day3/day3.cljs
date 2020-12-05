@@ -19,8 +19,7 @@
            index-y down]
       (if (>= index-y length)
         trees
-        (recur (if
-                (has-tree? (get data-v index-y) index-x)
+        (recur (if (has-tree? (get data-v index-y) index-x)
                  (+ trees 1)
                  trees)
                (+ index-x right)
